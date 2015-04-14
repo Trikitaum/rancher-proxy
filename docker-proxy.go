@@ -35,9 +35,13 @@ server {
 }`
 
 func getContainers() map[string][]string {
-	user := "1755739A98556879E22E"
-	password := "opCzCxQeb7FFmWsz2LKJ4TuhhmNULcuDUf9AgW8y"
-	resp, err := http.Get("http://" + user + ":" + password + "@178.62.207.180:8080/v1/containers/")
+	// user := "1755739A98556879E22E"
+	user := os.Getenv("USER")
+	// password := "opCzCxQeb7FFmWsz2LKJ4TuhhmNULcuDUf9AgW8y"
+	password := os.Getenv("PASSWORD")
+	// ip := "178.62.207.180"
+	ip := os.Getenv("IP")
+	resp, err := http.Get("http://" + user + ":" + password + "@" + ip + ":8080/v1/containers/")
 	if err != nil {
 		// handle error
 	}
